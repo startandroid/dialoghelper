@@ -1,51 +1,40 @@
 package com.startandroid.dialoghelper
 
-import android.content.Intent
-
 
 // TODO add possibility to use text instead of resId
 class DialogConfig {
 
-    var title: Int? = null
-        private set
+    internal var title: Int? = null
 
-    var message: Int? = null
-        private set
+    internal var message: Int? = null
 
-    var positiveText: Int? = null
-        private set
+    internal var positiveText: Int? = null
 
-    var negativeText: Int? = null
-        private set
+    internal var negativeText: Int? = null
 
-    var neutralText: Int? = null
-        private set
+    internal var neutralText: Int? = null
 
-    var positiveAction: ((Intent?) -> Unit)? = null
-        private set
+    internal var positiveAction: (() -> Unit)? = null
 
-    var negativeAction: ((Intent?) -> Unit)? = null
-        private set
+    internal var negativeAction: (() -> Unit)? = null
 
-    var neutralAction: ((Intent?) -> Unit)? = null
-        private set
-
+    internal var neutralAction: (() -> Unit)? = null
 
     fun title(text: Int) = apply { title = text }
 
     fun message(text: Int) = apply { message = text }
 
-    fun positive(text: Int, action: ((Intent?) -> Unit)? = null) = apply {
+    fun positive(text: Int, action: (() -> Unit)? = null) = apply {
         positiveText = text
         positiveAction = action
     }
 
-    fun negative(text: Int, action: ((Intent?) -> Unit)? = null) = apply {
+    fun negative(text: Int, action: (() -> Unit)? = null) = apply {
         negativeText = text
         negativeAction = action
     }
 
-    fun neutral(text: Int, action: ((Intent?) -> Unit)? = null) = apply {
+    fun neutral(text: Int, action: (() -> Unit)? = null) = apply {
         neutralText = text
         neutralAction = action
     }

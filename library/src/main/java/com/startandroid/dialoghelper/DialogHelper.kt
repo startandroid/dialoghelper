@@ -1,6 +1,5 @@
 package com.startandroid.dialoghelper
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
@@ -26,16 +25,18 @@ class DialogHelper {
             .show(targetActivity.supportFragmentManager, "dialog")
     }
 
-    fun handleResult(dialogCode: Int, resultCode: Int, data: Intent?) {
+    fun handleResult(dialogCode: Int, resultCode: Int) {
         configs[dialogCode]?.run {
             when (resultCode) {
                 DialogHelperFragment.RESULT_POSITIVE -> positiveAction
                 DialogHelperFragment.RESULT_NEGATIVE -> negativeAction
                 DialogHelperFragment.RESULT_NEUTRAL -> neutralAction
                 else -> null
-            }?.invoke(data)
+            }?.invoke()
         }
     }
+
+    // TODO create a possibility to show dialog without registration and handling result
 
 }
 

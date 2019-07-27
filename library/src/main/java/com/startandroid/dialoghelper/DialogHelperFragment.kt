@@ -2,7 +2,6 @@ package com.startandroid.dialoghelper
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -21,7 +20,11 @@ class DialogHelperFragment : DialogFragment() {
         const val RESULT_NEGATIVE = 2
         const val RESULT_NEUTRAL = 3
 
-        fun newInstance(dialogCode: Int, config: DialogConfig?, targetFragment: Fragment? = null): DialogHelperFragment {
+        fun newInstance(
+            dialogCode: Int,
+            config: DialogConfig?,
+            targetFragment: Fragment? = null
+        ): DialogHelperFragment {
             val fragment = DialogHelperFragment()
             fragment.setTargetFragment(targetFragment, dialogCode)
 
@@ -55,26 +58,32 @@ class DialogHelperFragment : DialogFragment() {
                 setMessage(getString(it))
             }
 
-            val callback  = getCallback()
+            val callback = getCallback()
 
             arguments?.getIntAndDo(EXTRA_POSITIVE_TEXT) {
                 setPositiveButton(getString(it)) { _, _ ->
-                    callback?.onDialogResult(dialogCode,
-                        RESULT_POSITIVE, Intent())
+                    callback?.onDialogResult(
+                        dialogCode,
+                        RESULT_POSITIVE
+                    )
                 }
             }
 
             arguments?.getIntAndDo(EXTRA_NEGATIVE_TEXT) {
                 setNegativeButton(getString(it)) { _, _ ->
-                    callback?.onDialogResult(dialogCode,
-                        RESULT_NEGATIVE, Intent())
+                    callback?.onDialogResult(
+                        dialogCode,
+                        RESULT_NEGATIVE
+                    )
                 }
             }
 
             arguments?.getIntAndDo(EXTRA_NEUTRAL_TEXT) {
                 setNeutralButton(getString(it)) { _, _ ->
-                    callback?.onDialogResult(dialogCode,
-                        RESULT_NEUTRAL, Intent())
+                    callback?.onDialogResult(
+                        dialogCode,
+                        RESULT_NEUTRAL
+                    )
                 }
             }
 
@@ -93,7 +102,6 @@ class DialogHelperFragment : DialogFragment() {
             action.invoke(getInt(key))
         }
     }
-
 
 
 }

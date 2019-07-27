@@ -1,9 +1,7 @@
 package com.startandroid.sample
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,25 +28,31 @@ class MainFragment() : Fragment(), DialogHelperCallback {
         view?.findViewById<TextView>(R.id.tv)?.setOnClickListener {
             click()
         }
-        registerDialogs()
     }
 
-    private fun registerDialogs() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // ...
+
         val dialogConfig = DialogConfig()
-            .title(R.string.test_title_1)
-            .message(R.string.test_message_1)
-            .positive(R.string.dialog_yes) { Log.d("qweee", "positive action") }
-            .negative(R.string.dialog_no) { Log.d("qweee", "negative action") }
-            .neutral(R.string.dialog_cancel) { Log.d("qweee", "neutral action") }
+            .message(R.string.delete_file_question)
+            .positive(R.string.yes) { deleteFile() }
+            .negative(R.string.no) // do nothing
         dialogHelper.registerDialogConfig(1, dialogConfig)
     }
 
-    fun click() {
-        dialogHelper.showDialog(1, this) // TODO use constant for dialogCode
+    private fun deleteFile() {
+
     }
 
-    override fun onDialogResult(requestCode: Int, resultCode: Int, data: Intent) {
-        dialogHelper.handleResult(requestCode, resultCode, data)
+    fun click() {
+        dialogHelper.showDialog(1, this)
+    }
+
+    override fun onDialogResult(requestCode: Int, resultCode: Int) {
+        dialogHelper.handleResult(requestCode, resultCode)
     }
 
 
