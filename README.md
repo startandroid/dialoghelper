@@ -10,7 +10,7 @@ Features:
 
 Gradle:
 ``` groovy
-    com.startandroid.dialog-helper:dialog-helper:0.1.0
+com.startandroid.dialog-helper:dialog-helper:0.1.0
 ```   
 
 ## How to use
@@ -32,13 +32,15 @@ override fun onCreate(savedInstanceState: Bundle?) {
   val dialogConfig = DialogConfig()  
         .message(R.string.delete_file_question)  
         .positive(R.string.yes) { deleteFile() }  
-  .negative(R.string.no) // do nothing  
+  .negative(R.string.no) // do nothing 
+  
   dialogHelper.registerDialogConfig(1, dialogConfig)  
 }
 ```
-Number 1 here is a dialog code.
-We set action (calling deleteFile() method) that will be invoked when user press Yes button. For No button we set no any actions. 
-We skipped operators title and neutralButton because we don't need title and Cancel button.
+Number 1 here is a dialog code.  
+We set action (calling deleteFile() method) that will be invoked when user press Yes button.   
+For No button we set no any actions.   
+We skipped operators title and neutralButton because we don't need title and Cancel button.  
 
 
 \
@@ -58,5 +60,5 @@ When user press button on the dialog, DialogHelper will get it and invoke your a
 
 ## FAQ
 
-Q: Why should i register dialog configs in onCreate method, and not right before showing a dialog? 
+Q: Why should i register dialog configs in onCreate method, and not right before showing a dialog?   
 A: Because of handling results after screen rotating. For example, you showed a dialog and then rotate the screen. Right after rotating the method onCreate will be called and handlers in dialog configs will be registered in DialogHelper.
