@@ -2,7 +2,7 @@
 A small library that helps you to create a simple android dialog and handle results.
 
 Features:
-- supports screen rotate
+- can handle results even after screen rotation
 - can be used from Activity and Fragment
 
 
