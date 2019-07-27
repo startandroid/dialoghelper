@@ -1,5 +1,5 @@
 # Dialog Helper
-A small library that helps you to create a simple android dialog.
+A small library that helps you to create a simple android dialog and handle results.
 
 Features:
 - supports screen rotate
