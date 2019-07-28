@@ -12,11 +12,7 @@ class DialogHelper {
     }
 
     fun showDialog(dialogCode: Int, targetFragment: Fragment) {
-        DialogHelperFragment.newInstance(
-            dialogCode,
-            configs[dialogCode],
-            targetFragment
-        )
+        DialogHelperFragment.newInstance(dialogCode, configs[dialogCode], targetFragment)
             .show(targetFragment.activity?.supportFragmentManager, "dialog")
     }
 
@@ -36,7 +32,17 @@ class DialogHelper {
         }
     }
 
-    // TODO create a possibility to show dialog without registration and handling result
+    fun showOkDialog(title: Int, message: Int, targetFragment: Fragment) {
+        val config = DialogConfig().title(title).message(message).positive(android.R.string.ok)
+        DialogHelperFragment.newInstance(config = config, targetFragment = targetFragment)
+            .show(targetFragment.activity?.supportFragmentManager, "dialog")
+    }
+
+    fun showOkDialog(title: Int, message: Int, targetActivity: AppCompatActivity) {
+        val config = DialogConfig().title(title).message(message).positive(android.R.string.ok)
+        DialogHelperFragment.newInstance(config = config)
+            .show(targetActivity.supportFragmentManager, "dialog")
+    }
 
 }
 

@@ -2,6 +2,7 @@ package com.startandroid.sample
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.startandroid.dialoghelper.DialogConfig
 import com.startandroid.dialoghelper.DialogHelper
 import com.startandroid.dialoghelper.DialogHelperCallback
 
+
+// TODO make normal samples (buttons for different dialogs)
 class MainFragment() : Fragment(), DialogHelperCallback {
 
     private val dialogHelper = DialogHelper()
@@ -37,9 +40,11 @@ class MainFragment() : Fragment(), DialogHelperCallback {
         // ...
 
         val dialogConfig = DialogConfig()
-            .message(R.string.delete_file_question)
-            .positive(R.string.yes) { deleteFile() }
-            .negative(R.string.no) // do nothing
+            .title("title text")
+            .message("message text")
+            .positive("positive text") { Log.d("qweee", "positive")}
+            .negative("negative text") { Log.d("qweee", "negative")}
+            //.neutral("neutral text") { Log.d("qweee", "neutral")}
         dialogHelper.registerDialogConfig(1, dialogConfig)
     }
 
@@ -48,6 +53,7 @@ class MainFragment() : Fragment(), DialogHelperCallback {
     }
 
     fun click() {
+        //dialogHelper.showOkDialog(R.string.test_title_1, R.string.test_message_1, this)
         dialogHelper.showDialog(1, this)
     }
 
