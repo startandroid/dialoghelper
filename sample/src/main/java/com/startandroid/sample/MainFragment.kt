@@ -44,7 +44,8 @@ class MainFragment() : Fragment(), DialogHelperCallback {
             .message("message text")
             .positive("positive text") { Log.d("qweee", "positive")}
             .negative("negative text") { Log.d("qweee", "negative")}
-            //.neutral("neutral text") { Log.d("qweee", "neutral")}
+            .neutral("neutral text") { Log.d("qweee", "neutral")}
+            .cancelable(true)
         dialogHelper.registerDialogConfig(1, dialogConfig)
     }
 

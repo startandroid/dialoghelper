@@ -144,11 +144,12 @@ class DialogHelperFragment : DialogFragment() {
 
 
 
-            arguments?.getBooleanAndDo(EXTRA_CANCELABLE) {
-                setCancelable(it)
-            }
-
         }
+
+        arguments?.getBooleanAndDo(EXTRA_CANCELABLE) {
+            setCancelable(it)
+        }
+
         return builder.create()
     }
 
