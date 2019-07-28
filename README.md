@@ -1,4 +1,5 @@
 # Dialog Helper
+
 A small library that helps you to create a simple android dialog and handle results.
 
 Features:
@@ -8,9 +9,12 @@ Features:
 
 ## Download
 
+[ ![Download](https://api.bintray.com/packages/startandroid/dialog-helper/dialog-helper/images/download.svg) ](https://bintray.com/startandroid/dialog-helper/dialog-helper/_latestVersion)
+
+
 Gradle:
 ``` groovy
-com.startandroid.dialog-helper:dialog-helper:0.1.0
+implementation 'com.startandroid.dialog-helper:dialog-helper:x.x.x'
 ```   
 
 ## How to use
