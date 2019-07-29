@@ -36,7 +36,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
   val dialogConfig = DialogConfig()  
         .message(R.string.delete_file_question)  
         .positive(R.string.yes) { deleteFile() }  
-  .negative(R.string.no) // do nothing 
+        .negative(R.string.no) // do nothing 
   
   dialogHelper.registerDialogConfig(1, dialogConfig)  
 }
