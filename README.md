@@ -55,7 +55,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
   dialogHelper.registerDialogConfig(1, dialogConfig)  
 }
 ```
-Number 1 here is a dialog code.  
+Number 1 here is a dialog code. It's id of dialog.  
 We set action (calling deleteFile() method) that will be invoked when user press Yes button.   
 For No button we set no any actions.   
 We skipped operators title and neutralButton because we don't need title and Cancel button.  
