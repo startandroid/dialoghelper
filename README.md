@@ -72,8 +72,6 @@ If you have set some actions for buttons, you need to add handling for dialog's 
 class MainFragment : Fragment(), HasDialogHandler {
     // ...
     override fun dialogHandler(): DialogHandler? = dialogHelper
-    
-    private val dialogHelper = DialogHelper()
     // ...
 ```
 When user press button on the dialog, DialogHelper will get it and will invoke your action that you have set in DialogConfig. It will work even after screen rotation.
