@@ -16,7 +16,7 @@ ext {
     siteUrl = 'https://github.com/startandroid/dialoghelper'
     gitUrl = 'https://github.com/startandroid/dialoghelper.git'
 
-    libraryVersion = '0.1.4'
+    libraryVersion = '0.1.5'
 
     developerId = 'startandroid'
     developerName = 'Dmitry Vinogradov'

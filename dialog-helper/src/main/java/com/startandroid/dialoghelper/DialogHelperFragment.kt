@@ -50,7 +50,7 @@ class DialogHelperFragment : DialogFragment() {
                 negativeText?.let { args.putString(EXTRA_NEGATIVE_TEXT, it) }
                 neutralResId?.let { args.putInt(EXTRA_NEUTRAL_RES_ID, it) }
                 neutralText?.let { args.putString(EXTRA_NEUTRAL_TEXT, it) }
-                cancelable?.let { args.putBoolean(EXTRA_CANCELABLE, it)}
+                cancelable?.let { args.putBoolean(EXTRA_CANCELABLE, it) }
             }
 
             return fragment
@@ -82,9 +82,7 @@ class DialogHelperFragment : DialogFragment() {
             }
 
 
-
             val callback = getCallback()
-
 
 
             val positiveDialogListener: (dialog: DialogInterface, which: Int) -> Unit = { _, _ ->
@@ -105,7 +103,6 @@ class DialogHelperFragment : DialogFragment() {
             }
 
 
-
             val negativeDialogListener: (dialog: DialogInterface, which: Int) -> Unit = { _, _ ->
                 dialogCode?.let {
                     callback?.onDialogResult(
@@ -122,7 +119,6 @@ class DialogHelperFragment : DialogFragment() {
             arguments?.getStringAndDo(EXTRA_NEGATIVE_TEXT) {
                 setNegativeButton(it, negativeDialogListener)
             }
-
 
 
             val neutralDialogListener: (dialog: DialogInterface, which: Int) -> Unit = { _, _ ->
@@ -143,19 +139,18 @@ class DialogHelperFragment : DialogFragment() {
             }
 
 
-
         }
 
         arguments?.getBooleanAndDo(EXTRA_CANCELABLE) {
-            setCancelable(it)
+            isCancelable = it
         }
 
         return builder.create()
     }
 
-    private fun getCallback(): DialogHelperCallback? {
-        return targetFragment as? DialogHelperCallback
-            ?: activity as? DialogHelperCallback
+    private fun getCallback(): DialogHandler? {
+        return (targetFragment as? HasDialogHandler
+            ?: activity as? HasDialogHandler)?.dialogHandler()
 
     }
 
