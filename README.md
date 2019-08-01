@@ -1,3 +1,4 @@
+
 # Dialog Helper
 
 A small kotlin library that helps you to create a simple android dialog and handle results.
@@ -11,8 +12,18 @@ Features:
 
 [ ![Download](https://api.bintray.com/packages/startandroid/dialog-helper/dialog-helper/images/download.svg) ](https://bintray.com/startandroid/dialog-helper/dialog-helper/_latestVersion)
 
+Add jcenter repository into project's build.gradle file
+``` groovy
+buildscript {
+    repositories {
+        jcenter()
+		...        
+    }
+    ...
+}
+``` 
 
-Gradle:
+Gradle dependency:
 ``` groovy
 implementation 'com.startandroid.dialog-helper:dialog-helper:x.x.x'
 ```   
@@ -25,6 +36,9 @@ private val dialogHelper = DialogHelper()
 ```
 
 \
+Then you need 3 steps to create and show dialog:
+
+### 1. Create dialog
 In OnCreate method of your Activity/Fragment create DialogConfig and register it in DialogHelper:
 
 ``` kotlin
@@ -46,14 +60,14 @@ We set action (calling deleteFile() method) that will be invoked when user press
 For No button we set no any actions.   
 We skipped operators title and neutralButton because we don't need title and Cancel button.  
 
-
-\
-When you need to show a dialog, call method showDialog and pass your dialog code and Activity/Fragment:
+### 2. Show dialog
+When you need to show the dialog, call method showDialog and pass your dialog code and your current Activity/Fragment:
 ``` kotlin
 dialogHelper.showDialog(1, this)
 ```
-\
-If you have set some actions for buttons, you need to add dialog's handling. Your Activity/Fragment should implement interface HasDialogHandler with method dialogHandler, in which you just return your DialogHelper object:
+
+### 3. Handle dialog's buttons
+If you have set some actions for buttons, you need to add handling for dialog's buttons. For this your Activity/Fragment should implement interface HasDialogHandler with method dialogHandler, in which you just return your DialogHelper object:
 ``` kotlin
 class MainFragment : Fragment(), HasDialogHandler {
     // ...
@@ -62,10 +76,10 @@ class MainFragment : Fragment(), HasDialogHandler {
     private val dialogHelper = DialogHelper()
     // ...
 ```
-When user press button on the dialog, DialogHelper will get it and will invoke your action that you have set in DialogConfig.
+When user press button on the dialog, DialogHelper will get it and will invoke your action that you have set in DialogConfig. It will work even after screen rotation.
 
 
 ## FAQ
 
 Q: Why should i register dialog configs in onCreate method, and not right before showing a dialog?   
-A: Because of handling results after screen rotating. For example, you showed a dialog and then rotate the screen. Right after rotating the method onCreate will be called and handlers in dialog configs will be registered in DialogHelper.
+A: Because of handling results after screen rotating. For example, you showed a dialog and then rotate the screen. Right after rotating the method onCreate will be called and handlers will be registered in DialogHelper.
