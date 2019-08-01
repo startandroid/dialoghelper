@@ -1,6 +1,6 @@
 # Dialog Helper
 
-A small library that helps you to create a simple android dialog and handle results.
+A small kotlin library that helps you to create a simple android dialog and handle results.
 
 Features:
 - can handle results even after screen rotation
@@ -53,13 +53,16 @@ When you need to show a dialog, call method showDialog and pass your dialog code
 dialogHelper.showDialog(1, this)
 ```
 \
-If you set some actions for buttons, your Activity/Fragment should implement interface DialogHelperCallback with one method:
+If you have set some actions for buttons, you need to add dialog's handling. Your Activity/Fragment should implement interface HasDialogHandler with method dialogHandler, in which you just return your DialogHelper object:
 ``` kotlin
-override fun onDialogResult(requestCode: Int, resultCode: Int) {
-    dialogHelper.handleResult(requestCode, resultCode)
-}
+class MainFragment : Fragment(), HasDialogHandler {
+    // ...
+    override fun dialogHandler(): DialogHandler? = dialogHelper
+    
+    private val dialogHelper = DialogHelper()
+    // ...
 ```
-When user press button on the dialog, DialogHelper will get it and invoke your action that you set in DialogConfig.
+When user press button on the dialog, DialogHelper will get it and will invoke your action that you have set in DialogConfig.
 
 
 ## FAQ
